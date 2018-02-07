@@ -3,6 +3,7 @@
 @story('deploy')
     git
     composer
+    migrate
 @endstory
 
 @task('git')
@@ -11,4 +12,8 @@
 
 @task('composer')
     composer update
+@endtask
+
+@task('migrate')
+    artisan migrate
 @endtask
