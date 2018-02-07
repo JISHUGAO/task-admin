@@ -1,5 +1,6 @@
 <?php
 
+use Encore\Admin\Auth\Database\Administrator;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -11,6 +12,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        if (Administrator::count() == 0) {
+            $this->call(\Encore\Admin\Auth\Database\AdminTablesSeeder::class);
+        }
     }
 }
