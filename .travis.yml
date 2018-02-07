@@ -2,3 +2,6 @@ language: php
 
 php:
   - '7.0'
+
+install:
+  - composer install --prefer-dist --optimize-autoloader --quiet
