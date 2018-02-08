@@ -19,10 +19,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 $api = app('Dingo\Api\Routing\Router');
 
-$api->version('v1', ['namespace' => 'Api', 'as' => 'api.'], function ($api) {
-    $api->get('/login', 'UserController@login');
+$api->version('v1', ['namespace' => 'App\Http\Controllers\Api', 'as' => 'api.'], function ($api) {
+    $api->post('/login', 'UserController@login');
 
     $api->group(['middleware' => 'api.auth'], function($api){
-
+        $api->resource('/tasks', 'TaskController');
     });
 });

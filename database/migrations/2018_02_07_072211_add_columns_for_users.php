@@ -17,6 +17,8 @@ class AddColumnsForUsers extends Migration
             $table->string('avatar');
             $table->string('nickname');
             $table->string('wx_openid');
+            $table->string('email')->nullable()->change();
+            $table->string('password')->nullable()->change();
         });
 
     }
@@ -28,6 +30,10 @@ class AddColumnsForUsers extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('avatar');
+            $table->dropColumn('nickname');
+            $table->dropColumn('wx_openid');
+        });
     }
 }
